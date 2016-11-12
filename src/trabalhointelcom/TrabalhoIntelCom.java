@@ -5,6 +5,8 @@
  */
 package trabalhointelcom;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author carlos
@@ -15,7 +17,17 @@ public class TrabalhoIntelCom {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       int largura=800, altura=600;
+                
+                
+        Pontos pt = new Pontos(4,largura,altura);
+        JFrame application = new JFrame("Resultado");
+        application.add(pt);
+        application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        application.setSize(largura,altura);
+        application.setVisible(true);
+        
+        
     }
     
 }

@@ -6,6 +6,7 @@
 package trabalhointelcom;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,6 +27,22 @@ public class TrabalhoIntelCom {
         application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         application.setSize(largura,altura);
         application.setVisible(true);
+        
+        
+        Gulosa gulosa = new Gulosa(pt.getCustos(), pt.getCoordenadas(), 3);
+        int[] rota = gulosa.getRota();
+        String aux = "";
+        for (int i = 0; i < rota.length; i++) {
+            aux+= "--"+rota[i];
+        }
+        JOptionPane.showMessageDialog(null, aux);
+        
+        Calculos cal = new Calculos(pt.getCustos(),gulosa.getRota(),pt.getCoordenadas());
+        JFrame s_gulosa = new JFrame("Metodo GUloso");
+        s_gulosa.add(cal);
+        s_gulosa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        s_gulosa.setSize(largura,altura);
+        s_gulosa.setVisible(true);
         
         
     }

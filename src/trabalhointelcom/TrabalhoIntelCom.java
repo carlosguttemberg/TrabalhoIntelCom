@@ -21,7 +21,7 @@ public class TrabalhoIntelCom {
        int largura=800, altura=600;
                 
                 
-        Pontos pt = new Pontos(4,largura,altura);
+        Pontos pt = new Pontos(10,largura,altura);
         JFrame application = new JFrame("Resultado");
         application.add(pt);
         application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

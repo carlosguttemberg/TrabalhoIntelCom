@@ -45,7 +45,7 @@ public class TrabalhoIntelCom {
         s_gulosa.setVisible(true);
         
         //Busca Local aleatória
-        BuscaLocal bl = new BuscaLocal(3, pt.getCustos());
+        BuscaLocal bl = new BuscaLocal(3, pt.getCustos(), gulosa.getRota());
         Calculos cal2 = new Calculos(pt.getCustos(),bl.getRota(),pt.getCoordenadas());
         JFrame buscaAleatorio = new JFrame("Busca Local Aleatória");
         buscaAleatorio.add(cal2);

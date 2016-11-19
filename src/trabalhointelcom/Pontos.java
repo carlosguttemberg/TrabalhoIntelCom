@@ -74,12 +74,15 @@ public class Pontos  extends JPanel{
     } 
     
     public void gerar(){
-        int vx[] = {320, 83, 101, 64, 92, 403, 540, 76, 200, 100};
-        int vy[] = {122, 400, 270, 71, 333, 101, 90, 555, 81, 66};
+        int vx[] = {230, 38, 101, 46, 29, 304, 54, 67, 2, 300};
+        int vy[] = {221, 4, 72, 17, 111, 10, 109, 222, 18, 400};
+        Random r = new Random();
         int x, y;
         for (int i=0; i<this.vertices;i++){
-            x=vx[i];
-            y=vy[i];
+            x = r.nextInt(this.largura);
+            y = r.nextInt(this.altura);
+            //x=vx[i];
+            //y=vy[i];
             this.coordenadas[i][0]=x;
             this.coordenadas[i][1]=y;
         }

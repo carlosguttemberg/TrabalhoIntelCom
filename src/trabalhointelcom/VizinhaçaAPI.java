@@ -84,7 +84,9 @@ public class VizinhaçaAPI {
     
     //aplicando a busca local
     int troca;
-    while(custoRotaAtual < custoMelhorRota){
+    boolean continua = true;
+    while(continua){
+        continua = false;
         for (int i=1; i<this.rota.length-1; i++){
           for (int j=i+1; j<this.rota.length; j++){
             troca= rotaAtual[j];  
@@ -97,6 +99,7 @@ public class VizinhaçaAPI {
 
             //este custo foi menor?
             if(custoRotaAtual < custoMelhorRota){
+              continua = true;
               //Melhorou, atualizando a melhore rota
               for (int k = 0; k<rotaAtual.length; k++){
                 melhorRota[k]=rotaAtual[k];

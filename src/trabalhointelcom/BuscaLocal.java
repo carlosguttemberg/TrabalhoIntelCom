@@ -88,36 +88,40 @@ public class BuscaLocal {
     
     //aplicando a busca local
     int troca;
-    
-    for (int i=1; i<this.rota.length-1; i++){
-      for (int j=i+1; j<this.rota.length; j++){
-        troca= rotaAtual[i];  
-        rotaAtual[i]=rotaAtual[j];
-        rotaAtual[j]=troca;
-        
-        //Calculando o custo dessa rota
-        calc.setRota(rotaAtual);
-        custoRotaAtual= calc.custoRota();
-        
-        //este custo foi menor?
-        if(custoRotaAtual < custoMelhorRota){
-          //Melhorou, atualizando a melhore rota
-          for (int k = 0; k<rotaAtual.length; k++){
-            melhorRota[k]=rotaAtual[k];
+    boolean continua = true;
+    while(continua){
+        continua = false;
+        for (int i=1; i<this.rota.length-1; i++){
+          for (int j=i+1; j<this.rota.length; j++){
+            troca= rotaAtual[i];  
+            rotaAtual[i]=rotaAtual[j];
+            rotaAtual[j]=troca;
+
+            //Calculando o custo dessa rota
+            calc.setRota(rotaAtual);
+            custoRotaAtual= calc.custoRota();
+
+            //este custo foi menor?
+            if(custoRotaAtual < custoMelhorRota){
+              continua = true;
+              //Melhorou, atualizando a melhore rota
+              for (int k = 0; k<rotaAtual.length; k++){
+                melhorRota[k]=rotaAtual[k];
+              }
+              custoMelhorRota=custoRotaAtual;
+            }
+
+            //Voltando com a rota original 
+            for (int k = 0; k<rotaAtual.length;k++){
+              rotaAtual[k]=this.rota[k];
+            }
           }
-          custoMelhorRota=custoRotaAtual;
+
+          //atualizando a rota original
+          for (int k = 0; k<rotaAtual.length;k++){
+              rota[k]=melhorRota[k];
+          }
         }
-        
-        //Voltando com a rota original 
-        for (int k = 0; k<rotaAtual.length;k++){
-          rotaAtual[k]=this.rota[k];
-        }
-      }
-      
-      //atualizando a rota original
-      for (int k = 0; k<rotaAtual.length;k++){
-          rota[k]=melhorRota[k];
-      }
     }
     
   }

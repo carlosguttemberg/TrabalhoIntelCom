@@ -79,10 +79,10 @@ public class Pontos  extends JPanel{
         Random r = new Random();
         int x, y;
         for (int i=0; i<this.vertices;i++){
-            x = r.nextInt(this.largura);
-            y = r.nextInt(this.altura);
-            //x=vx[i];
-            //y=vy[i];
+          //  x = r.nextInt(this.largura);
+          //  y = r.nextInt(this.altura);
+            x=vx[i];
+            y=vy[i];
             this.coordenadas[i][0]=x;
             this.coordenadas[i][1]=y;
         }

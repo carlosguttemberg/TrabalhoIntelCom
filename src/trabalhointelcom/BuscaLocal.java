@@ -74,7 +74,7 @@ public class BuscaLocal {
     int []melhorRota = new int[this.rota.length];
     int []rotaAtual = new int[this.rota.length];
     double custoRotaAtual, custoMelhorRota;
-    
+    int contador = 0 ;
     //Inicialmente a melhor rota e a rota atual são iguais 
     //ao vetor rota;
     for (int i=0; i<this.rota.length;i++){
@@ -89,8 +89,11 @@ public class BuscaLocal {
     //aplicando a busca local
     int troca;
     boolean continua = true;
-    while(continua){
-        continua = false;
+    while((continua) && (contador <= (this.rota.length * 100))){
+        if (contador == (this.rota.length * 100)){
+          continua = false;  
+        }
+        
         for (int i=1; i<this.rota.length-1; i++){
           for (int j=i+1; j<this.rota.length; j++){
             troca= rotaAtual[i];  
@@ -103,7 +106,10 @@ public class BuscaLocal {
 
             //este custo foi menor?
             if(custoRotaAtual < custoMelhorRota){
-              continua = true;
+              if (contador == this.rota.length){
+                  continua = true;  
+              }
+        
               //Melhorou, atualizando a melhore rota
               for (int k = 0; k<rotaAtual.length; k++){
                 melhorRota[k]=rotaAtual[k];
@@ -122,6 +128,8 @@ public class BuscaLocal {
               rota[k]=melhorRota[k];
           }
         }
+        contador++;
+        
     }
     
   }

@@ -11,7 +11,7 @@ import java.util.Random;
  *
  * @author Windows
  */
-public class VizinhaçaAPI {
+public class VizinhancaAPI {
     
     private int ponto_partida;
     private double[][]custos; 
@@ -25,15 +25,21 @@ public class VizinhaçaAPI {
         this.rota = rota;
     }
 
-    public VizinhaçaAPI(int ponto_partida, double[][] custos) {
+    public VizinhancaAPI(int ponto_partida, double[][] custos) {
         this.ponto_partida = ponto_partida;
         this.custos = custos;
+        this.rota = new int[custos.length];
+        
+        gerarAleatorio();
+        Vizinhanca();
     }
     
-    public VizinhaçaAPI(int ponto_partida, double[][] custos, int[] rota) {
+    public VizinhancaAPI(int ponto_partida, double[][] custos, int[] rota) {
         this.ponto_partida = ponto_partida;
         this.custos = custos;
         this.rota = rota;
+        
+        Vizinhanca();
     }
     
      private void gerarAleatorio(){
@@ -66,11 +72,11 @@ public class VizinhaçaAPI {
       }
   }
   
-  private void allPairs(){
+  private void Vizinhanca(){
     int []melhorRota = new int[this.rota.length];
     int []rotaAtual = new int[this.rota.length];
     double custoRotaAtual, custoMelhorRota;
-    
+    int contador =0;
     //Inicialmente a melhor rota e a rota atual são iguais 
     //ao vetor rota;
     for (int i=0; i<this.rota.length;i++){
@@ -85,12 +91,16 @@ public class VizinhaçaAPI {
     //aplicando a busca local
     int troca;
     boolean continua = true;
-    while(continua){
-        continua = false;
+    while((continua) && (contador <= (this.rota.length * 100))){
+        
+        if (contador == this.rota.length){
+          continua = false;  
+        }
+        
         for (int i=1; i<this.rota.length-1; i++){
-          for (int j=i+1; j<this.rota.length; j++){
-            troca= rotaAtual[j];  
-            rotaAtual[j]=rotaAtual[i];
+         
+            troca= rotaAtual[i+1];  
+            rotaAtual[i+1]=rotaAtual[i];
             rotaAtual[i]=troca;
 
             //Calculando o custo dessa rota
@@ -99,7 +109,9 @@ public class VizinhaçaAPI {
 
             //este custo foi menor?
             if(custoRotaAtual < custoMelhorRota){
-              continua = true;
+              if (contador == this.rota.length){
+                continua = true;   
+              }
               //Melhorou, atualizando a melhore rota
               for (int k = 0; k<rotaAtual.length; k++){
                 melhorRota[k]=rotaAtual[k];
@@ -111,13 +123,13 @@ public class VizinhaçaAPI {
             for (int k = 0; k<rotaAtual.length;k++){
               rotaAtual[k]=this.rota[k];
             }
-          }
 
           //atualizando a rota original
           for (int k = 0; k<rotaAtual.length;k++){
               rota[k]=melhorRota[k];
           }
         }
+        contador ++;
     }
  }
 }

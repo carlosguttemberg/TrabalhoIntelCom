@@ -74,8 +74,8 @@ public class Pontos  extends JPanel{
     } 
     
     public void gerar(){
-        int vx[] = {230, 38, 101, 46, 29, 304, 54, 67, 2, 300};
-        int vy[] = {221, 4, 72, 17, 111, 10, 109, 222, 18, 400};
+        int vx[] = {140, 38, 100, 46, 300, 304, 74, 100, 40, 300};
+        int vy[] = {420, 120, 30, 60, 160, 30, 250, 300, 190, 450};
         Random r = new Random();
         int x, y;
         for (int i=0; i<this.vertices;i++){

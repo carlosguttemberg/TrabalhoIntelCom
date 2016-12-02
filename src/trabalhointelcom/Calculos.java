@@ -18,17 +18,6 @@ public class Calculos  extends JPanel{
     private int[] rota;
     private int[][] coordenadas;
 
-    public Calculos(double[][] custos, int[] rota, int[][] coordenadas) {
-        this.custos = custos;
-        this.rota = rota;
-        this.coordenadas = coordenadas;
-    }
-
-    public Calculos(double[][] custos, int[] rota) {
-        this.custos = custos;
-        this.rota = rota;
-    }
-
     public void setCustos(double[][] custos) {
         this.custos = custos;
     }
@@ -37,14 +26,16 @@ public class Calculos  extends JPanel{
         this.rota = rota;
     }
 
-    public double[][] getCustos() {
-        return custos;
+    public Calculos(double[][] custos, int[] rota) {
+        this.custos = custos;
+        this.rota = rota;
     }
 
-    public int[] getRota() {
-        return rota;
+    public Calculos(double[][] custos, int[] rota, int[][] coordenadas) {
+        this.custos = custos;
+        this.rota = rota;
+        this.coordenadas = coordenadas;
     }
-    
     
     public double custoRota(){
         double c=0;
@@ -91,8 +82,7 @@ public class Calculos  extends JPanel{
         y2=this.coordenadas[this.rota[0]][1];
         g.drawLine(x1,y1,x2,y2);
         
-        //escrevendo o custo desta rota
-        g.drawString("Custo= " + custoRota(), 10, 500);
+        //Escrevendo o custo desta Rota
+        g.drawString("Custo = " + custoRota(), 10, 500);
     } 
-
 }

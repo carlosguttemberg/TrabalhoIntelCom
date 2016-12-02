@@ -89,8 +89,8 @@ public class BuscaLocal {
     //aplicando a busca local
     int troca;
     boolean continua = true;
-    while((continua) && (contador <= (this.rota.length * 100))){
-        if (contador == (this.rota.length * 100)){
+    while((continua) || (contador <= (this.rota.length * 500))){
+        if (contador == (this.rota.length * 500)){
           continua = false;  
         }
         

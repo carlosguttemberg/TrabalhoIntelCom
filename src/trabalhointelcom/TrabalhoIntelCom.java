@@ -29,7 +29,7 @@ public class TrabalhoIntelCom {
         application.setVisible(true);
         
         
-        Gulosa gulosa = new Gulosa(pt.getCustos(), pt.getCoordenadas(), 4);
+        Gulosa gulosa = new Gulosa(pt.getCustos(), pt.getCoordenadas(), 9);
         int[] rota = gulosa.getRota();
         String aux = "";
         for (int i = 0; i < rota.length; i++) {
@@ -45,7 +45,7 @@ public class TrabalhoIntelCom {
         s_gulosa.setVisible(true);
         
         //Busca Local aleatória;;
-        BuscaLocal bl2 = new BuscaLocal(4, pt.getCustos());
+        BuscaLocal bl2 = new BuscaLocal(9, pt.getCustos());
         Calculos cal4 = new Calculos(pt.getCustos(),bl2.getRota(), pt.getCoordenadas());
         JFrame buscaAleatorio = new JFrame("Busca Local Aleatória");
         buscaAleatorio.add(cal4);
@@ -53,7 +53,7 @@ public class TrabalhoIntelCom {
         buscaAleatorio.setSize(largura,altura);
         buscaAleatorio.setVisible(true);
         
-        BuscaLocal bl = new BuscaLocal(4, pt.getCustos(), gulosa.getRota());
+        BuscaLocal bl = new BuscaLocal(9, pt.getCustos(), gulosa.getRota());
         Calculos cal2 = new Calculos(pt.getCustos(),bl.getRota(),pt.getCoordenadas());
         JFrame buscaAleatorio4 = new JFrame("Busca Local");
         buscaAleatorio4.add(cal2);
@@ -62,9 +62,9 @@ public class TrabalhoIntelCom {
         buscaAleatorio4.setVisible(true);
         
         //Vizinhança
-        VizinhancaAPI va = new VizinhancaAPI(4, pt.getCustos());
+        VizinhancaAPI va = new VizinhancaAPI(9, pt.getCustos());
         Calculos cal3 = new Calculos(pt.getCustos(),bl.getRota(),pt.getCoordenadas());
-        JFrame buscaAleatorio2 = new JFrame("VizinhaçaAPI");
+        JFrame buscaAleatorio2 = new JFrame("VizinhançaAPI");
         buscaAleatorio2.add(cal3);
         buscaAleatorio2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         buscaAleatorio2.setSize(largura,altura);
